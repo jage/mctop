@@ -26,7 +26,7 @@ class CmdLine
       end
 
       @config[:host] = nil
-      opt.on '-h', '--host=HOST', 'Only show traffic to/from this host' do |host|
+      opt.on nil, '--host=HOST', 'Only show traffic to/from this host' do |host|
         @config[:host] = host
       end
 
