@@ -7,6 +7,7 @@ class MemcacheSniffer
   def initialize(config)
     @source  = config[:nic]
     @port    = config[:port]
+    @host    = config[:host]
 
     @metrics = {}
     @metrics[:calls]   = {}
@@ -14,6 +15,10 @@ class MemcacheSniffer
     @metrics[:reqsec]  = {}
     @metrics[:bw]    = {}
     @metrics[:stats]   = { :recv => 0, :drop => 0 }
+
+
+    @filter = "port #{@port}"
+    @filter << " and host #{@host}" if @host
 
     @semaphore = Mutex.new
   end
@@ -25,7 +30,7 @@ class MemcacheSniffer
 
     @done    = false
 
-    cap.setfilter("port #{@port}")
+    cap.setfilter(@filter)
     cap.loop do |packet|
       @metrics[:stats] = cap.stats
 

@@ -42,7 +42,8 @@ the quickest way to get it running is to:
         -p, --port=PORT                  Network port to sniff on (default 11211)
         -d, --discard=THRESH             Discard keys with request/sec rate below THRESH
         -r, --refresh=MS                 Refresh the stats display every MS milliseconds
-        -h, --help                       Show usage info
+        -h, --host=HOST                  Only show traffic to/from this host
+            --help                       Show usage info
 
 ## User interface commands
 

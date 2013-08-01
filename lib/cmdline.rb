@@ -25,6 +25,11 @@ class CmdLine
         @config[:refresh_rate] = refresh_rate
       end
 
+      @config[:host] = nil
+      opt.on '-h', '--host=HOST', 'Only show traffic to/from this host' do |host|
+        @config[:host] = host
+      end
+
       opt.on_tail '-h', '--help', 'Show usage info' do
         puts opts
         exit
